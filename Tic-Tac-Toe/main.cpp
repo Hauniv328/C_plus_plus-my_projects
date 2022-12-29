@@ -6,8 +6,8 @@
 using namespace std;
 
 char board[3][3];
-int t1 = 0, t2 = 0; // 반복 횟수를 저장해둠
-int turn = 1; //차례를 저장함.
+int t1 = 0, t2 = 0;
+int turn = 1;
 
 #define target_ind board[get_index1(target)][get_index2(target)]
 
@@ -23,10 +23,10 @@ int main() {
             t1++;
             board[i-1][i2-1] = (char)(t1 + 48);
         }
-    } // board 초기화
+    } //setting board
 
     int input;
-    while (true) { // 메인 루프
+    while (true) { // main loop
         draw();
 
         if(checking_end()) {
@@ -82,7 +82,7 @@ int main() {
     }
 }
 
-void draw() { // 보드를 그림
+void draw() { // drawing board
     t1 = 0;
     for (int i = 1; i <= 7; i++) {
         if(i % 2 == 1) {
@@ -98,7 +98,7 @@ void draw() { // 보드를 그림
     }
 }
 
-bool checking(int target) { //입력된 값이 적절한지 확인
+bool checking(int target) { // check the input
     if(0 < target && target < 10 && (target_ind != 'o' && target_ind != 'x')) {
         return true;
     } else {
@@ -106,7 +106,7 @@ bool checking(int target) { //입력된 값이 적절한지 확인
     }
 }
 
-bool checking_end() {
+bool checking_end() { // check if this game end
     if(board[1][1] == board[1][0] && board[1][1] == board[1][2] || board[1][1] == board[0][1] && board[1][1] == board[2][1]) {
         return true;
     } else if(board[1][1] == board[0][0] && board[1][1] == board[2][2] || board[1][1] == board[0][2] && board[1][1] == board[2][0]) {
